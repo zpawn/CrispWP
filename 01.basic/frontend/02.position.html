@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Position</title>
+
+    <style>
+        .traffic-light {
+            position: relative;
+            max-width: 200px;
+            margin: 0 auto;
+            padding: 15px 70px;
+            border: 1px solid #000;
+        }
+            .traffic-light__lamp {
+                border: 1px solid #000;
+                margin: 10px 0;
+                padding-bottom: 100%;
+                border-radius: 50%;
+            }
+
+                .traffic-light__lamp--red {
+                    background-color: #f00;
+                }
+
+                .traffic-light__lamp--yellow {
+                    background-color: #ff0;
+                }
+
+                .traffic-light__lamp--green {
+                    background-color: #080;
+                }
+    </style>
+</head>
+
+<body>
+
+<div class="traffic-light">
+    <div class="traffic-light__lamp traffic-light__lamp--red"></div>
+    <div class="traffic-light__lamp traffic-light__lamp--yellow"></div>
+    <div class="traffic-light__lamp traffic-light__lamp--green"></div>
+</div>
+
+</body>
+</html>
