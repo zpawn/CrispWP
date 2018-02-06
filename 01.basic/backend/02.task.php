@@ -2,7 +2,6 @@
 
 //** SetUp
 date_default_timezone_set('Europe/Kiev');
-set_time_limit(5);
 
 /**
  * Task 01:
