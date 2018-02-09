@@ -19,8 +19,8 @@
 					<img src="<?= get_template_directory_uri(); ?>/assets/images/logo.png">
 				</a>
 			</div>
-			<form class="search">
-				<input type="text">
+			<form class="search" method="get" id="searchForm" action="<?= home_url('/'); ?>">
+				<input type="text" id="search" name="s" value="<?php the_search_query(); ?>">
 				<input type="image" src="<?= get_template_directory_uri() ?>/assets/images/button-search.png">
 			</form>
 		</div>

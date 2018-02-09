@@ -443,3 +443,13 @@ ul.nav li a:hover {
 .footer p {
     color: #656565;
 }
+
+/* Custom styles */
+h2 > a {
+    color: #838383;
+    line-height: normal;
+    text-decoration: none;
+}
+    h2 > a:hover {
+        text-decoration: underline;
+    }
