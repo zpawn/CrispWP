@@ -2,3 +2,7 @@
 /**/access.log
 /**/error.log
 
+### Task 02
+02.basic.wp/**/*.*
+!02.basic.wp/wp-content/themes/black-and-white/**/*.*
+
