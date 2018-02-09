@@ -9,6 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: bootstrap, responsive, flat, simple, mobile ready
 Text Domain: bw
 */
+
 * {
     margin: 0;
     padding: 0;
@@ -20,8 +21,8 @@ html,body {
 }
 
 body {
-    background: #e7e7e7 url("images/bg.jpg") repeat;
-    font-family: Arial;
+    background: #e7e7e7 url("./assets/images/bg.jpg") repeat;
+    font-family: 'Arial', 'sans-serif';
     font-size: 13px;
     color: black;
     line-height: 20px;
@@ -56,7 +57,12 @@ blockquote:before {
     content: "— ";
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #838383;
     line-height: normal;
 }
@@ -79,7 +85,9 @@ h3 {
     font-size: 16px;
 }
 
-h1+p,h2+p,h3+p {
+h1+p,
+h2+p,
+h3+p {
     margin-top: 5px;
 }
 
@@ -88,7 +96,9 @@ a img {
     outline: none;
 }
 
-ul,ol,dl {
+ul,
+ol,
+dl {
     margin: 0 0 0 30px;
 }
 
@@ -100,17 +110,22 @@ dd {
     margin-left: 15px;
 }
 
-input,button,textarea {
+input,
+button,
+textarea {
     display: inline-block;
 }
 
-input[type=text],textarea,select {
+input[type=text],
+textarea,
+select {
     padding: 5px;
     height: auto;
     border: 1px solid #b7b7b7;
 }
 
-input[type=text],textarea {
+input[type=text],
+textarea {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
     -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
     -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
@@ -121,7 +136,8 @@ input[type=text],textarea {
     transition: all linear 0.2s;
 }
 
-input[type=checkbox],input[type=radio] {
+input[type=checkbox],
+input[type=radio] {
     margin: 3px 5px 0 0;
     float: left;
 }
@@ -144,7 +160,10 @@ label {
     vertical-align: middle;
 }
 
-input:focus,button:focus,textarea:focus,select:focus {
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border: 1px solid black;
     box-shadow: none;
@@ -187,7 +206,8 @@ table.bordered {
     width: 100%;
 }
 
-table.bordered th, table.bordered td {
+table.bordered th,
+table.bordered td {
     border: 1px solid #d5d5d5;
     padding: 5px;
     vertical-align: top;
@@ -209,10 +229,11 @@ table.bordered tbody tr:hover {
     position: relative;
     z-index: 1;
 }
-/*Шапка*/
+
+/* Header */
 .header {
     height: 60px;
-    background: url("images/bg-header.jpg") repeat-x;
+    background: url("./assets/images/bg-header.jpg") repeat-x;
 }
 
 .headerContent {
@@ -245,7 +266,7 @@ form.search input[type=text] {
     float: left;
 }
 
-/*Слайдер*/
+/* Slider */
 .slider {
     height: 329px;
     background-color: black;
@@ -365,7 +386,8 @@ form.search input[type=text] {
 .carousel-caption p {
     color: #ffffff;
 }
-/*Навигация*/
+
+/* Navigation */
 ul.nav {
     margin: 0;
     padding: 0;
@@ -391,7 +413,8 @@ ul.nav li a {
 ul.nav li a:hover {
     background-color: #272727;
 }
-/*Контент*/
+
+/* Content */
 .content {
     background-color: white;
     width: 1000px;
@@ -409,7 +432,8 @@ ul.nav li a:hover {
     margin-right: 15px;
     border: 10px solid #e2e2e2;
 }
-/*Подвал*/
+
+/* Footer */
 .footer {
     width: 1000px;
     margin: 0 auto;

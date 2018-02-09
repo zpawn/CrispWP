@@ -7,7 +7,12 @@
     <blockquote title="blockquote">Duis aute irure dolor in reprehenderit in voluptate velit esse</blockquote>
     <!--Изображения-->
     <h2>Images</h2>
-    <p><img src="images/img1.jpg"><img src="images/img2.jpg"><img src="images/img3.jpg"><img src="images/img4.jpg"></p>
+    <p>
+        <img src="images/img1.jpg">
+        <img src="images/img2.jpg">
+        <img src="images/img3.jpg">
+        <img src="images/img4.jpg">
+    </p>
     <!--Списки и определения-->
     <h2>Lists and Descriptions</h2>
     <div class="row">
