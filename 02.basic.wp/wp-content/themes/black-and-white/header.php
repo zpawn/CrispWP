@@ -56,13 +56,13 @@
 		</div>
 	</div>
 
-	<!--Контент-->
+	<!-- Content -->
 	<div class="content">
-		<!--Навигация-->
-		<ul class="nav">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="about.html">About</a></li>
-			<li><a href="work.html">Work</a></li>
-			<li><a href="blog.html">Blog</a></li>
-			<li><a href="contacts.html">Contacts</a></li>
-		</ul>
+		<!-- Navigation -->
+		<?php
+			wp_nav_menu([
+				'theme_location'    => 'primary',
+				'menu_class'        => 'nav',
+				'container'         => false
+			]);
+		?>
