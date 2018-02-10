@@ -2,6 +2,11 @@
 
 <!-- Main Content -->
 <main class="main">
+
+    <?php if (is_home()) : ?>
+        <h1><?php single_post_title(); ?></h1>
+    <?php endif; ?>
+
     <?php if ( have_posts() ) : ?>
 
         <?php while ( have_posts() ) : ?>

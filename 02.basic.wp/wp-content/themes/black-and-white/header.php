@@ -5,7 +5,7 @@
 	<meta name="description" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
 	<meta name="keywords" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
 
-	<title>Бесплатные шаблоны сайтов</title>
+	<title><?php wp_title(); ?></title>
 
 	<?php wp_head(); ?>
 </head>
