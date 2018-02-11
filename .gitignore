@@ -11,3 +11,4 @@
 02.about.php/**/*.*
 !02.about.php/wp-content/themes/about-php/**/*.*
 !02.about.php/docker-compose.yml
+!02.about.php/db.sql
