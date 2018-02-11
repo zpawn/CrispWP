@@ -2,7 +2,12 @@
 /**/access.log
 /**/error.log
 
-### Task 02
+### Task 02: practice
 02.basic.wp/**/*.*
 !02.basic.wp/wp-content/themes/black-and-white/**/*.*
 !02.basic.wp/docker-compose.yml
+
+### Task 02: about php
+02.about.php/**/*.*
+!02.about.php/wp-content/themes/about-php/**/*.*
+!02.about.php/docker-compose.yml
