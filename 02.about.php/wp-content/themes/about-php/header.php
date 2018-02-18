@@ -21,8 +21,8 @@
 			<div class="header__wrap">
 				<div class="header__logo">
 					<a href="<?= home_url('/') ?>" class="logo">
-						<div class="logo__part1">JET</div>
-						<div class="logo__part2">RO</div>
+						<div class="logo__part1">About</div>
+						<div class="logo__part2">PHP</div>
 					</a>
 				</div>
 				<div class="header__nav">
