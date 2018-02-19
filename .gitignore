@@ -12,3 +12,8 @@
 !02.about.php/wp-content/themes/about-php/**/*.*
 !02.about.php/docker-compose.yml
 !02.about.php/db.sql
+
+### Task 03: Black and White
+03.black-and-white/**/*.*
+!03.black-and-white/wp-content/themes/black-and-white/**/*.*
+!03.black-and-white/docker-compose.yml
