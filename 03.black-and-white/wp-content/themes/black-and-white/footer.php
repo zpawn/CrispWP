@@ -11,22 +11,24 @@
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'blackwhite' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'blackwhite' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'blackwhite' ), 'blackwhite', '<a href="https://github.com/zpawn/CrispWP">Ilia Makarov</a>' );
-			?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer__copyright">
+                <p>&copy; Footer content <a href="http://psd-html-css.ru">Link footer</a></p>
+            </div>
+            <div class="footer__menu">
+                <?php
+                    if ( has_nav_menu( 'footer' ) ) {
+                        wp_nav_menu( [
+                            'theme_location' => 'footer',
+                            'container' => false
+                        ] );
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
 
 <?php wp_footer(); ?>
 

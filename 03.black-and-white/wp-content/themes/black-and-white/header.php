@@ -9,48 +9,75 @@
  * @package Black&White
  */
 
+$gallery = new WP_Query( [ 'post_type'=> 'gallery' ] );
+$gallery_first_image = true;
+
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="description" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
+    <meta name="keywords" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
 
-	<?php wp_head(); ?>
+    <title><?php wp_title(); ?></title>
+
+    <?php wp_head(); ?>
 </head>
+<body>
+<div class="wrapper">
+    <!--Шапка-->
+    <div class="header">
+        <div class="headerContent">
+            <div class="logo">
+                <a href="/">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/images/logo.png">
+                </a>
+            </div>
+            <form class="search" method="get" id="searchForm" action="<?= home_url('/'); ?>">
+                <input type="text" id="search" name="s" value="<?php the_search_query(); ?>">
+                <input type="image" src="<?= get_template_directory_uri() ?>/assets/images/button-search.png">
+            </form>
+        </div>
+    </div>
+    <!--Слайдер-->
+    <?php if ( $gallery->have_posts() ) : ?>
+    <div class="slider">
+        <div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'blackwhite' ); ?></a>
+                <?php while ( $gallery->have_posts() ) : $gallery->the_post(); ?>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
+                    <?php $image = get_field('image'); ?>
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
+                    <div class="item <?= $gallery_first_image ? 'active' : '' ?>">
+                        <img src="<?= $image['url'] ?>" alt="<?php the_title(); ?>">
+                        <div class="carousel-caption">
+                            <h4><?php the_title(); ?></h4>
+                            <p><?php the_content(); ?></p>
+                        </div>
+                    </div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'blackwhite' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+                    <?php $gallery_first_image = false; ?>
 
-	<div id="content" class="site-content">
+                <?php endwhile; ?>
+
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navigation -->
+<?php
+if ( has_nav_menu( 'primary' ) ) {
+	wp_nav_menu( [
+		'theme_location' => 'primary',
+		'menu_class' => 'nav',
+        'container' => false
+	] );
+}
+?>
