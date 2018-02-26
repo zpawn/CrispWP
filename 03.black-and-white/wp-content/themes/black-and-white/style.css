@@ -441,3 +441,13 @@ ul.nav li a:hover {
 		float: left;
 		padding: 0 10px;
 	}
+
+/* Google Map */
+.google-map__wrapper {
+	width: 100%;
+	max-width: 100%;
+}
+
+.google-map {
+	height: 500px;
+}
