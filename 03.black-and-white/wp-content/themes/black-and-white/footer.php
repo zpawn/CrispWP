@@ -15,12 +15,6 @@
         <!-- Footer -->
         <footer class="footer_wrapper">
             <div class="footer">
-                <div class="footer__map google-map__wrapper">
-                    <div class="google-map" id="googleMaps"></div>
-                </div>
-            </div>
-
-            <div class="footer">
                 <div class="footer__copyright">
                     <p>&copy; Footer content <a href="http://psd-html-css.ru">Link footer</a></p>
                 </div>

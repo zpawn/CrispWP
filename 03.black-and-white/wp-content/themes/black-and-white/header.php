@@ -41,33 +41,33 @@ $gallery_first_image = true;
         </div>
     </div>
     <!--Слайдер-->
-    <?php if ( $gallery->have_posts() ) : ?>
-    <div class="slider">
-        <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-
-                <?php while ( $gallery->have_posts() ) : $gallery->the_post(); ?>
-
-                    <?php $image = get_field('image'); ?>
-
-                    <div class="item <?= $gallery_first_image ? 'active' : '' ?>">
-                        <img src="<?= $image['url'] ?>" alt="<?php the_title(); ?>">
-                        <div class="carousel-caption">
-                            <h4><?php the_title(); ?></h4>
-                            <p><?php the_content(); ?></p>
-                        </div>
-                    </div>
-
-                    <?php $gallery_first_image = false; ?>
-
-                <?php endwhile; ?>
-
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>
-    </div>
-    <?php endif; ?>
+<!--    --><?php //if ( $gallery->have_posts() ) : ?>
+<!--    <div class="slider">-->
+<!--        <div id="myCarousel" class="carousel slide">-->
+<!--            <div class="carousel-inner">-->
+<!---->
+<!--                --><?php //while ( $gallery->have_posts() ) : $gallery->the_post(); ?>
+<!---->
+<!--                    --><?php //$image = get_field('image'); ?>
+<!---->
+<!--                    <div class="item --><?//= $gallery_first_image ? 'active' : '' ?><!--">-->
+<!--                        <img src="--><?//= $image['url'] ?><!--" alt="--><?php //the_title(); ?><!--">-->
+<!--                        <div class="carousel-caption">-->
+<!--                            <h4>--><?php //the_title(); ?><!--</h4>-->
+<!--                            <p>--><?php //the_content(); ?><!--</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    --><?php //$gallery_first_image = false; ?>
+<!---->
+<!--                --><?php //endwhile; ?>
+<!---->
+<!--            </div>-->
+<!--            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>-->
+<!--            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    --><?php //endif; ?>
 
     <!-- Content -->
     <div class="content">

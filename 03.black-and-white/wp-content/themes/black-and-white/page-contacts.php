@@ -12,7 +12,11 @@
  * @package Black&White
  */
 
-get_header(); ?>
+get_header();
+
+$location = get_field( 'map' );
+$options = get_option( 'blackwhite_options' );
+?>
 
 <!--Основная часть-->
 <div class="main">
@@ -44,6 +48,15 @@ get_header(); ?>
             <button type="submit">Button</button>
         </div>
     </form>
+
+    <?php if( !empty($location) ): ?>
+        <div class="acf-google-map__wrapper">
+            <div class="acf-google-map js-acf-google-map"
+                 data-google-maps-api-lat="<?= $location['lat']; ?>"
+                 data-google-maps-api-lng="<?= $location['lng']; ?>"
+                 data-google-maps-api-key="<?= $options['google_maps_api_key']; ?>"></div>
+        </div>
+    <?php endif; ?>
 
 </div>
 

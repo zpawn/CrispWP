@@ -1,59 +1,63 @@
-(function() {
+(function () {
     'use strict';
 
-    const API_KEY = 'AIzaSyBYGEtn-zAItcQi72nY7vD0mnLUTla4o-Y';
-    var tag = document.createElement('script');
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    var acfGoogleMap = $('.js-acf-google-map');
 
-    tag.src = 'https://maps.googleapis.com/maps/api/js?key='+ API_KEY +'&callback=initMap&libraries=places';
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    if (acfGoogleMap.length) {
 
-    function setMapMarkers (map) {
+        const API_KEY = $(acfGoogleMap[0]).data('googleMapsApiKey');
 
-        var markers = [];
+        var tag = document.createElement('script'),
+            firstScriptTag = document.getElementsByTagName('script')[0];
 
-        var cities = [{
-            coordinates: [36.23099, 49.986477],
-            name: 'Kharkiv'
-        }];
+        tag.src = 'https://maps.googleapis.com/maps/api/js?key='+ API_KEY +'&callback=initMap&libraries=places';
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
 
-        var infoWindow = new google.maps.InfoWindow();
+    function setMapMarkers (map, position) {
 
-        for (var i = 0; i < cities.length; i += 1) {
-            var city = cities[i];
-
-            markers[i] = new google.maps.Marker({
-                position: {lat: city.coordinates[1], lng: city.coordinates[0]},
-                map: map,
-                title: city.name,
-                zIndex: i
+        var infoWindow = new google.maps.InfoWindow(),
+            marker = new google.maps.Marker({
+                position: {lat: position.lat, lng: position.lng},
+                map: map
             });
 
-            google.maps.event.addListener(markers[i], 'click', (function(marker, i) {
-                return function() {
-                    infoWindow.setContent(
-                        '<p>Brightgrove LTD.,</p>' +
-                        '<p>1A Kooperativnaja Str. Kharkiv, Ukraine, 61003</p>'
-                    );
-                    infoWindow.open(map, marker);
-                }
-            })(markers[i], i));
-        }
+        infoWindow.setContent(
+            '<p>Brightgrove LTD.,</p>' +
+            '<p>1A Kooperativnaja Str. Kharkiv, Ukraine, 61003</p>'
+        );
+
+        google.maps.event.addListener(marker, 'click', (function() {
+            infoWindow.open(map, marker);
+        }));
+
+        infoWindow.open(map, marker);
     }
 
     function initMap () {
 
-        var centerUkraine = {lat: 49.986477, lng: 36.23099};
+        $('.js-acf-google-map').each(function (index, elmMap) {
 
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('googleMaps'), {
-            center: centerUkraine,
-            scrollwheel: false,
-            zoom: 18,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            var position = {
+                    lat: parseFloat(elmMap.dataset.googleMapsApiLat),
+                    lng: parseFloat(elmMap.dataset.googleMapsApiLng)
+                };
+
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(elmMap, {
+                center: {
+                    lat: position.lat,
+                    lng: position.lng
+                },
+                scrollwheel: false,
+                zoom: 18,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            setMapMarkers(map, position);
         });
 
-        setMapMarkers(map);
+
     }
 
     window.initMap = initMap;

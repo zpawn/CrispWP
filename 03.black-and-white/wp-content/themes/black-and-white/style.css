@@ -443,11 +443,11 @@ ul.nav li a:hover {
 	}
 
 /* Google Map */
-.google-map__wrapper {
+.acf-google-map__wrapper {
 	width: 100%;
 	max-width: 100%;
 }
 
-.google-map {
-	height: 500px;
+.acf-google-map {
+	height: 300px;
 }

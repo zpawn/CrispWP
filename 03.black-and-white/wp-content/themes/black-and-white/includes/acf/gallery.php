@@ -4,7 +4,7 @@
  * @author Ilia Makarov <ilia.makarov@me.com>
  */
  
-function blackwhite_init () {
+function blackwhite_acf_gallery () {
 	$labels = [
 		'name'                  => __( 'Gallery', 'blackwhite' ),
 		'singular_name'         => __( 'Gallery', 'blackwhite' ),
