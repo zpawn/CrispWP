@@ -471,7 +471,8 @@ ul.nav li a:hover {
 			text-decoration: underline;
 		}
 
-.post-content img {
+.post-content img,
+.post-single img {
 	box-sizing: border-box;
 	max-width: 100%;
 	height: auto;
@@ -490,3 +491,17 @@ ul.nav li a:hover {
 	.post-single__sidebar {
 		width: calc(100% / 3 * 1);
 	}
+
+	.post-single__posted {
+		margin-bottom: 20px;
+		color: #838383;
+	}
+
+	.post-single__date {}
+
+	.post-single__author a {
+		color: #000;
+	}
+		.post-single__author a:hover {
+			text-decoration: none;
+		}
