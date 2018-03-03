@@ -451,3 +451,42 @@ ul.nav li a:hover {
 .acf-google-map {
 	height: 300px;
 }
+
+/* Posts */
+.post-title {
+	color: #838383;
+	line-height: normal;
+}
+
+	.post-title:first-letter {
+		color: #000;
+	}
+
+	.post-title__link {
+		text-decoration: none;
+		color: #838383;
+	}
+
+		.post-title__link:hover {
+			text-decoration: underline;
+		}
+
+.post-content img {
+	box-sizing: border-box;
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.post-single {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+}
+	.post-single__content {
+		width: calc(100% / 3 * 2);
+	}
+	.post-single__sidebar {
+		width: calc(100% / 3 * 1);
+	}
