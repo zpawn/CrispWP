@@ -6,7 +6,14 @@
 ?>
 
 <?php if (have_posts()) : ?>
-	<?php while (have_posts()) : the_post(); ?>
+	<?php
+        while (have_posts()) : the_post();
+
+            $categories = array_reduce(get_the_category(), function ($categories, $category) {
+		        $categories[] = '<a href="'. esc_url( get_category_link( $category->term_id ) ) .'">'. $category->name .'</a>';
+		        return $categories;
+	        }, [])
+	?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		    <header class="entry-header">
 			    <h1><?php the_title(); ?></h1>
@@ -19,6 +26,13 @@
 			            <a href="<?= esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>"><?= esc_html( get_the_author() )?></a>
 		            </span>
 		        </div><!-- .entry-meta -->
+                <div class="post-single__category">
+                    <?= __( 'Categories', 'blackwhite' ); ?>:
+
+                    <?php if (!empty($categories)) : ?>
+                        <?= implode( ', ', $categories ); ?>
+                    <?php endif; ?>
+                </div>
 		    </header><!-- .entry-header -->
 
 			<?php the_post_thumbnail(); ?>

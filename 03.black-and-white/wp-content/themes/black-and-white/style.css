@@ -493,7 +493,7 @@ ul.nav li a:hover {
 	}
 
 	.post-single__posted {
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 		color: #838383;
 	}
 
@@ -505,3 +505,7 @@ ul.nav li a:hover {
 		.post-single__author a:hover {
 			text-decoration: none;
 		}
+
+	.post-single__category {
+		margin-bottom: 20px;
+	}
