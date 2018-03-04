@@ -16,15 +16,23 @@ get_header();
 
 global $post;
 $post_slug = $post->post_name;
+$template_path = TEMPLATEPATH ."/template-parts/content-{$post_slug}.php"
+
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+                while ( have_posts() ) {
+                    the_post();
 
-				<?php get_template_part( 'template-parts/content', $post_slug ); ?>
-
-			<?php endwhile; ?>
+                    if ( file_exists($template_path) ) {
+                        get_template_part( 'template-parts/content', $post_slug );
+                    } else {
+                        get_template_part( 'template-parts/content', 'page' );
+                    }
+                }
+			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
