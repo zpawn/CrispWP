@@ -509,3 +509,20 @@ ul.nav li a:hover {
 	.post-single__category {
 		margin-bottom: 20px;
 	}
+
+.pagination {}
+	.pagination .page-numbers {
+		margin: 30px 0;
+		list-style-type: none;
+		text-align: center;
+	}
+		.pagination .page-numbers li {
+			display: inline-block;
+		}
+		.pagination .page-numbers a,
+		.pagination .page-numbers span{
+			padding: 10px;
+		}
+		.pagination .page-numbers .current {
+			font-size: 1.2em;
+		}
