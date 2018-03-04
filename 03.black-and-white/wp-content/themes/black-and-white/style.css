@@ -507,6 +507,10 @@ ul.nav li a:hover {
 		}
 
 	.post-single__category {
+		margin-bottom: 10px;
+	}
+
+	.post-single__taxonomy {
 		margin-bottom: 20px;
 	}
 

@@ -20,6 +20,7 @@ include( get_template_directory() . '/includes/activate.php' );
 include( get_template_directory() . '/includes/admin/menus.php' );
 include( get_template_directory() . '/includes/admin/options-page.php' );
 include( get_template_directory() . '/includes/admin/init.php' );
+include( get_template_directory() . '/includes/taxonomy.php' );
 
 //*** Action & Filter Hook
 add_action( 'wp_enqueue_scripts', 'blackwhite_enqueue' );
@@ -28,3 +29,4 @@ add_action( 'init', 'blackwhite_acf_gallery' );
 add_action( 'after_switch_theme', 'blackwhite_activate' );
 add_action( 'admin_menu', 'blackwhite_admin_menu' );
 add_filter( 'acf/fields/google_map/api', 'acf_google_map' );
+add_action( 'init', 'blackwhite_create_taxonomy' );

@@ -33,6 +33,20 @@
                         <?= implode( ', ', $categories ); ?>
                     <?php endif; ?>
                 </div>
+
+                <div class="post-single__taxonomy">
+                    <?= __( 'Taxonomy', 'blackwhite' ) ?>:
+                    <?php $year_terms = get_the_terms($post->ID, 'year'); ?>
+
+                    <?php if( $year_terms ): ?>
+
+	                    <?php foreach ( $year_terms as $term ) : ?>
+		                    <a href="<?= get_term_link($term, 'year'); ?>">
+		                        <span class="term"><?= $term->name; ?></span>
+		                    </a>
+	                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
 		    </header><!-- .entry-header -->
 
 			<?php the_post_thumbnail(); ?>
