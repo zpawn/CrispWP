@@ -36,7 +36,10 @@
 		    </header><!-- .entry-header -->
 
 			<?php the_post_thumbnail(); ?>
-			<?php the_content(); ?>
+
+            <?php the_content(); ?>
+
+            <?php comments_template(); ?>
 
 		</article><!-- #post-<?php the_ID(); ?> -->
 	<?php endwhile; ?>
