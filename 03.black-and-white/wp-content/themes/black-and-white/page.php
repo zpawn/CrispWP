@@ -16,7 +16,7 @@ get_header();
 
 global $post;
 $post_slug = $post->post_name;
-$template_path = TEMPLATEPATH ."/template-parts/content-{$post_slug}.php"
+$template_path = TEMPLATEPATH ."/template-parts/page/content-{$post_slug}.php";
 
 ?>
 	<div id="primary" class="content-area">
@@ -27,9 +27,9 @@ $template_path = TEMPLATEPATH ."/template-parts/content-{$post_slug}.php"
                     the_post();
 
                     if ( file_exists($template_path) ) {
-                        get_template_part( 'template-parts/content', $post_slug );
+                        get_template_part( 'template-parts/page/content', $post_slug );
                     } else {
-                        get_template_part( 'template-parts/content', 'page' );
+                        get_template_part( 'template-parts/page/content', 'page' );
                     }
                 }
 			?>
