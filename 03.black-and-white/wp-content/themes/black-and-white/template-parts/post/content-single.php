@@ -7,10 +7,9 @@
 $year_term_links = [];
 
 if ( $post->post_type == 'books' ) {
+
     $year_term_links = array_reduce(wp_get_post_terms( $post->ID, 'year' ), function ($terms, $term) {
-
-        $terms[] = '<a href="'. get_term_link( $term, 'year' ) .'"><span class="term">'. $term->name .'</span></a>';
-
+        $terms[] = '<a href="'. esc_url( get_term_link( $term, 'year' ) ) .'"><span class="term">'. $term->name .'</span></a>';
         return $terms;
     }, []);
 }
@@ -31,7 +30,7 @@ if ( $post->post_type == 'books' ) {
 			    <h1><?php the_title(); ?></h1>
 
 		        <div class="post-single__posted">
-		            <span class="post-single__date"><?= get_the_date() ?> <?= get_the_time() ?></span>
+		            <span class="post-single__date"><?php echo get_the_date() ?> <?php echo get_the_time() ?></span>
 			        <?php echo __( 'by', 'blackwhite' ) ?>
 		            <span class="post-single__author">
 			            <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>"><?php echo esc_html( get_the_author() )?></a>

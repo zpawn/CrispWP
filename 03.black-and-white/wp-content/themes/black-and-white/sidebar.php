@@ -16,7 +16,7 @@ $related_posts = get_posts([
 
 ?>
 
-<h2><?= __( 'Related Posts', 'blackwhite' ); ?></h2>
+<h2><?php _e( 'Related Posts', 'blackwhite' ); ?></h2>
 
 <?php if ( !empty( $related_posts ) ) : ?>
     <ul>
@@ -27,7 +27,7 @@ $related_posts = get_posts([
         <?php endforeach; ?>
     </ul>
 <?php else : ?>
-    <?= __( 'No Related Posts', 'blackwhite' ) ?>
+    <?php echo __( 'No Related Posts', 'blackwhite' ) ?>
 <?php endif; ?>
 
 <?php wp_reset_postdata(); ?>

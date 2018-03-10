@@ -12,16 +12,16 @@
 add_theme_support( 'menus' );
 
 //*** Includes
-include( get_template_directory() . '/includes/helper.php' );
-include( get_template_directory() . '/includes/front/enqueue.php' );
-include( get_template_directory() . '/includes/setup.php' );
-include( get_template_directory() . '/includes/acf/gallery.php' );
-include( get_template_directory() . '/includes/acf/google_map.php' );
-include( get_template_directory() . '/includes/activate.php' );
-include( get_template_directory() . '/includes/admin/menus.php' );
-include( get_template_directory() . '/includes/admin/options-page.php' );
-include( get_template_directory() . '/includes/admin/init.php' );
-include( get_template_directory() . '/includes/books/init.php' );
+require( TEMPLATEPATH . '/includes/helper.php' );
+require( TEMPLATEPATH . '/includes/front/enqueue.php' );
+require( TEMPLATEPATH . '/includes/setup.php' );
+require( TEMPLATEPATH . '/includes/acf/gallery.php' );
+require( TEMPLATEPATH . '/includes/acf/google_map.php' );
+require( TEMPLATEPATH . '/includes/activate.php' );
+require( TEMPLATEPATH . '/includes/admin/menus.php' );
+require( TEMPLATEPATH . '/includes/admin/options-page.php' );
+require( TEMPLATEPATH . '/includes/admin/init.php' );
+require( TEMPLATEPATH . '/includes/books/init.php' );
 
 //*** Action & Filter Hook
 add_action( 'wp_enqueue_scripts', 'blackwhite_enqueue' );

@@ -52,9 +52,9 @@ $options = get_option( 'blackwhite_options' );
     <?php if( !empty($location) ): ?>
         <div class="acf-google-map__wrapper">
             <div class="acf-google-map js-acf-google-map"
-                 data-google-maps-api-lat="<?= $location['lat']; ?>"
-                 data-google-maps-api-lng="<?= $location['lng']; ?>"
-                 data-google-maps-api-key="<?= $options['google_maps_api_key']; ?>"></div>
+                 data-google-maps-api-lat="<?php echo $location['lat']; ?>"
+                 data-google-maps-api-lng="<?php echo $location['lng']; ?>"
+                 data-google-maps-api-key="<?php echo $options['google_maps_api_key']; ?>"></div>
         </div>
     <?php endif; ?>
 

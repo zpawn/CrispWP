@@ -14,8 +14,6 @@
  */
 function blackwhite_isset_template_part ($slug = '', $type = '') {
 
-	blackwhite_debug($slug, $type);
-
 	if ( empty( $name ) && empty( $type ) ) {
 		return false;
 	}

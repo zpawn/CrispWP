@@ -12,13 +12,8 @@
  * @package Black&White
  */
 
-get_header();
+get_header(); ?>
 
-global $post;
-$post_slug = $post->post_name;
-$template_path = TEMPLATEPATH ."/template-parts/page/content-{$post_slug}.php";
-
-?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -26,8 +21,8 @@ $template_path = TEMPLATEPATH ."/template-parts/page/content-{$post_slug}.php";
                 while ( have_posts() ) {
                     the_post();
 
-                    if ( file_exists($template_path) ) {
-                        get_template_part( 'template-parts/page/content', $post_slug );
+                    if ( blackwhite_isset_template_part( $post->post_name, 'page' ) ) {
+                        get_template_part( 'template-parts/page/content', $post->post_name );
                     } else {
                         get_template_part( 'template-parts/page/content', 'page' );
                     }

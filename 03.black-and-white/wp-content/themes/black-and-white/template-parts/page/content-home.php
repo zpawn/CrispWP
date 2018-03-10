@@ -20,10 +20,10 @@ query_posts([
     <blockquote title="blockquote">Duis aute irure dolor in reprehenderit in voluptate velit esse</blockquote>
 
     <p>
-        <img src="<?= get_template_directory_uri() ?>/assets/images/img1.jpg">
-        <img src="<?= get_template_directory_uri() ?>/assets/images/img2.jpg">
-        <img src="<?= get_template_directory_uri() ?>/assets/images/img3.jpg">
-        <img src="<?= get_template_directory_uri() ?>/assets/images/img4.jpg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/img1.jpg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/img2.jpg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/img3.jpg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/img4.jpg">
     </p>
 
     <?php if (have_posts()) : ?>
@@ -58,6 +58,6 @@ query_posts([
 
         <?php wp_reset_query(); ?>
     <?php else: ?>
-        <?= __( 'No Posts!!!', 'blackwhite' ) ?>
+        <?php _e( 'No Posts!!!', 'blackwhite' ) ?>
     <?php endif; ?>
 </div>
