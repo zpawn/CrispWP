@@ -30,4 +30,3 @@ add_action( 'init', 'blackwhite_acf_gallery' );
 add_action( 'after_switch_theme', 'blackwhite_activate' );
 add_action( 'admin_menu', 'blackwhite_admin_menu' );
 add_filter( 'acf/fields/google_map/api', 'acf_google_map' );
-add_action( 'init', 'blackwhite_book_init' );
