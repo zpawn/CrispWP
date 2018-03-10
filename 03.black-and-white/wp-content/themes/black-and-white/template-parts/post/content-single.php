@@ -6,25 +6,26 @@
 
 $year_term_links = [];
 
-if ( $post->post_type == 'books' ) {
+if ( have_posts() ) {
 
-    $year_term_links = array_reduce(wp_get_post_terms( $post->ID, 'year' ), function ($terms, $term) {
-        $terms[] = '<a href="'. esc_url( get_term_link( $term, 'year' ) ) .'"><span class="term">'. $term->name .'</span></a>';
-        return $terms;
-    }, []);
+    if ( $post->post_type == BOOKS_POST_TYPE ) {
+
+        $year_term_links = array_reduce(wp_get_post_terms( $post->ID, 'year' ), function ($terms, $term) {
+            $terms[] = '<a href="'. esc_url( get_term_link( $term, 'year' ) ) .'"><span class="term">'. $term->name .'</span></a>';
+            return $terms;
+        }, []);
+    }
+
+	$categories = array_reduce(get_the_category(), function ($categories, $category) {
+		$categories[] = '<a href="'. esc_url( get_category_link( $category->term_id ) ) .'">'. $category->name .'</a>';
+		return $categories;
+	}, []);
 }
 
 ?>
 
 <?php if (have_posts()) : ?>
-	<?php
-        while (have_posts()) : the_post();
-
-            $categories = array_reduce(get_the_category(), function ($categories, $category) {
-		        $categories[] = '<a href="'. esc_url( get_category_link( $category->term_id ) ) .'">'. $category->name .'</a>';
-		        return $categories;
-	        }, [])
-	?>
+	<?php while (have_posts()) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		    <header class="entry-header">
 			    <h1><?php the_title(); ?></h1>
@@ -40,7 +41,7 @@ if ( $post->post_type == 'books' ) {
                     <div class="post-single__category">
                         <?php _e( 'Categories', 'blackwhite' ); ?>:
                         <?php echo implode( ', ', $categories ); ?>
-                </div>
+                    </div>
                 <?php endif; ?>
 
                 <?php if (!empty($year_term_links)) : ?>

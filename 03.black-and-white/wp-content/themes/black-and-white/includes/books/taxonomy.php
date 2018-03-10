@@ -54,7 +54,7 @@ function blackwhite_register_post_type_taxonomy () {
 		'show_in_menu'          => true,
 		'show_in_nav_menus'     => true,
 		'query_var'             => true,
-		'rewrite'               => [ 'slug' => 'books' ],
+		'rewrite'               => [ 'slug' => BOOKS_POST_TYPE ],
 		'capability_type'       => 'post',
 		'has_archive'           => true,
 		'hierarchical'          => false,
@@ -63,6 +63,6 @@ function blackwhite_register_post_type_taxonomy () {
 		'menu_icon'             => 'dashicons-editor-bold',
 		'taxonomies'            => [ 'year' ]
 	);
-	register_taxonomy( 'year', [ 'books' ], $taxonomyArgs );
-	register_post_type( 'books', $postTypeArgs );
+	register_taxonomy( 'year', [ BOOKS_POST_TYPE ], $taxonomyArgs );
+	register_post_type( BOOKS_POST_TYPE, $postTypeArgs );
 }
