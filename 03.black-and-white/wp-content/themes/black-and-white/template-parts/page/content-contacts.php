@@ -12,8 +12,6 @@
  * @package Black&White
  */
 
-get_header();
-
 $location = get_field( 'map' );
 $options = get_option( 'blackwhite_options' );
 ?>
@@ -59,5 +57,3 @@ $options = get_option( 'blackwhite_options' );
     <?php endif; ?>
 
 </div>
-
-<?php get_footer(); ?>
