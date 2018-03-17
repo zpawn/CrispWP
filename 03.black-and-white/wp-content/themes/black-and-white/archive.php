@@ -58,5 +58,4 @@ $post_type = get_query_var('post_type');
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

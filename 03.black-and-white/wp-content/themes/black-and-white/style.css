@@ -442,6 +442,8 @@ ul.nav li a:hover {
 		padding: 0 10px;
 	}
 
+	.footer__sidebar {}
+
 /* Google Map */
 .acf-google-map__wrapper {
 	width: 100%;
@@ -480,15 +482,18 @@ ul.nav li a:hover {
 	padding: 0;
 }
 
-.post-single {
+.post-single,
+.page-content {
 	display: flex;
 	flex-direction: row;
 	padding: 10px;
 }
-	.post-single__content {
+	.post-single__content,
+	.page-content__main {
 		width: calc(100% / 3 * 2);
 	}
-	.post-single__sidebar {
+	.post-single__sidebar,
+	.page-content__sidebar {
 		width: calc(100% / 3 * 1);
 	}
 

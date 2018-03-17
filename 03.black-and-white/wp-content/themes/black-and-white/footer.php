@@ -14,10 +14,18 @@
         </div>
         <!-- Footer -->
         <footer class="footer_wrapper">
+
             <div class="footer">
                 <div class="footer__copyright">
                     <p>&copy; Footer content <a href="http://psd-html-css.ru">Link footer</a></p>
                 </div>
+
+                <?php if ( is_active_sidebar('blackwhite_sidebar_footer') ) : ?>
+                    <div class="footer__sidebar">
+                            <?php dynamic_sidebar('blackwhite_sidebar_footer'); ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="footer__menu">
                     <?php
                         if ( has_nav_menu( 'footer' ) ) {

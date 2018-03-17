@@ -12,10 +12,12 @@
  * @package Black&White
  */
 
+$isSidebar = is_active_sidebar( 'blackwhite_sidebar_right' );
+
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<div id="primary" class="content-area <?php echo $isSidebar ? 'page-content' : '' ?>">
+		<main id="main" class="site-main <?php echo $isSidebar ? 'page-content__main' : '' ?>">
 
 			<?php
                 while ( have_posts() ) {
@@ -30,7 +32,11 @@ get_header(); ?>
 			?>
 
 		</main><!-- #main -->
+        <?php if ( $isSidebar ) : ?>
+            <div class="page-content__sidebar">
+                <?php get_sidebar(); ?>
+            </div>
+        <?php endif; ?>
 	</div><!-- #primary -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

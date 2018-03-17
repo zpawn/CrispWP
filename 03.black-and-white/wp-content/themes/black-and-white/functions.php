@@ -22,6 +22,8 @@ require( TEMPLATEPATH . '/includes/admin/menus.php' );
 require( TEMPLATEPATH . '/includes/admin/options-page.php' );
 require( TEMPLATEPATH . '/includes/admin/init.php' );
 require( TEMPLATEPATH . '/includes/books/init.php' );
+require( TEMPLATEPATH . '/includes/sidebars.php' );
+require( TEMPLATEPATH . '/includes/widgets.php' );
 
 //*** Action & Filter Hook
 add_action( 'wp_enqueue_scripts', 'blackwhite_enqueue' );
@@ -30,3 +32,5 @@ add_action( 'init', 'blackwhite_acf_gallery' );
 add_action( 'after_switch_theme', 'blackwhite_activate' );
 add_action( 'admin_menu', 'blackwhite_admin_menu' );
 add_filter( 'acf/fields/google_map/api', 'acf_google_map' );
+add_action( 'widgets_init', 'blackwhite_widgets_init' );
+add_action( 'widgets_init', 'blackwhite_sidebars_init' );
