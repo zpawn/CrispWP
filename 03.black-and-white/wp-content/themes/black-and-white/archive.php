@@ -11,9 +11,10 @@ get_header();
 
 $postType = get_query_var('post_type');
 $author = ( isset($_REQUEST['book_author']) && !empty($_REQUEST['book_author']) ? $_REQUEST['book_author'] : false );
+$isEmptyBooksAuthor = false;
 
 if ($author) {
-    global $wpdb, $wp_query, $query_string;
+    global $wp_query, $query_string;
 
     $postIds = blackwhite_get_post_ids_by_book_author( $author );
 
@@ -22,6 +23,8 @@ if ($author) {
 		    $wp_query->query,
             [ 'post__in' => $postIds ]
         ));
+    } else {
+	    $isEmptyBooksAuthor = true;
     }
 }
 
@@ -30,7 +33,7 @@ if ($author) {
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-            <?php if ( have_posts() ) : ?>
+            <?php if ( have_posts() && !$isEmptyBooksAuthor) : ?>
 
                 <header class="page-header">
                     <?php
@@ -45,8 +48,8 @@ if ($author) {
                     /* Start the Loop */
                     while ( have_posts() ) : the_post();
 
-                        if ($postType == 'books') {
-                            get_template_part( 'template-parts/archive/content', 'books' );
+                        if ($postType == BOOKS_POST_TYPE ) {
+                            get_template_part( 'template-parts/archive/content', BOOKS_POST_TYPE );
                         } else {
                             /*
                              * Include the Post-Format-specific template for the content.
