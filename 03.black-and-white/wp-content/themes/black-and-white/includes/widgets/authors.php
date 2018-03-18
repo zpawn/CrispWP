@@ -50,7 +50,7 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 		if ( !empty( $authors ) ) : ?>
             <ul>
 				<?php foreach ($authors as $authorName) : ?>
-					<?php $authorPermalink = esc_url(add_query_arg( 'author', $authorName, $baseAuthorPermalink )); ?>
+					<?php $authorPermalink = esc_url(add_query_arg( 'book_author', $authorName, $baseAuthorPermalink )); ?>
                     <li>
                         <a href="<?php echo $authorPermalink ?>" data-author="<?php echo $authorName ?>">
                             <?php echo $authorName ?>

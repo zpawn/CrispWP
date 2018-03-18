@@ -9,7 +9,25 @@
 
 get_header();
 
-$post_type = get_query_var('post_type');
+$postType = get_query_var('post_type');
+$author = ( isset($_REQUEST['book_author']) && !empty($_REQUEST['book_author']) ? $_REQUEST['book_author'] : false );
+
+if ($author) {
+    global $wpdb, $wp_query, $query_string;
+
+    $postIds = $wpdb->get_col(
+	    $wpdb->prepare(
+		    "SELECT `post_id` FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' AND `meta_value` = %s", $author
+	    )
+    );
+
+    if (!empty($postIds)) {
+	    query_posts(array_merge(
+		    $wp_query->query,
+            [ 'post__in' => $postIds ]
+        ));
+    }
+}
 
 ?>
 
@@ -31,7 +49,7 @@ $post_type = get_query_var('post_type');
                     /* Start the Loop */
                     while ( have_posts() ) : the_post();
 
-                        if ($post_type == 'books') {
+                        if ($postType == 'books') {
                             get_template_part( 'template-parts/archive/content', 'books' );
                         } else {
                             /*
@@ -43,6 +61,10 @@ $post_type = get_query_var('post_type');
                         }
 
                     endwhile;
+
+                    if ($author) {
+                        wp_reset_query();
+                    }
 
                     the_posts_navigation();
                     ?>
