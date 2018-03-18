@@ -30,7 +30,7 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-	    global $wpdb;
+	    global $wpdb, $wp_rewrite;
 
 	    $title = $instance['title'];
 
@@ -40,10 +40,22 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 
 		$authors = $wpdb->get_col("SELECT `meta_value` as name FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' GROUP BY `name`");
 
+		$baseAuthorPermalink = home_url();
+		$baseAuthorPermalink .= str_replace(
+            '%'. BOOKS_POST_TYPE .'%',
+            '',
+            $wp_rewrite->get_extra_permastruct( BOOKS_POST_TYPE )
+        );
+
 		if ( !empty( $authors ) ) : ?>
             <ul>
 				<?php foreach ($authors as $authorName) : ?>
-                    <li><a href="" data-author="<?php echo $authorName ?>"><?php echo $authorName ?></a></li>
+					<?php $authorPermalink = esc_url(add_query_arg( 'author', $authorName, $baseAuthorPermalink )); ?>
+                    <li>
+                        <a href="<?php echo $authorPermalink ?>" data-author="<?php echo $authorName ?>">
+                            <?php echo $authorName ?>
+                        </a>
+                    </li>
 				<?php endforeach; ?>
             </ul>
 		<?php endif;
