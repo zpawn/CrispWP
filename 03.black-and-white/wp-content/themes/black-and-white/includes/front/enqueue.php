@@ -5,8 +5,8 @@
  */
  
 function blackwhite_enqueue () {
-	wp_enqueue_style( 'blackwhite-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'blackwhite-web-ui-popover', get_template_directory_uri() . '/assets/css/jquery.webui-popover.css' );
+	wp_enqueue_style( 'blackwhite-style', get_stylesheet_uri(), [], '1.1' );
+	wp_enqueue_style( 'blackwhite-web-ui-popover', get_template_directory_uri() . '/assets/css/jquery.webui-popover.css', [], '1.2.18' );
 
 	wp_register_script( 'blackwhite-jquery', get_template_directory_uri() . '/assets/js/jquery.js', [], '1.7.1', true );
 	wp_register_script( 'blackwhite-bootstrap-transition', get_template_directory_uri() . '/assets/js/bootstrap-transition.js', [ 'blackwhite-jquery' ], '3', true);
