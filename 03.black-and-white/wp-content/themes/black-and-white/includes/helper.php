@@ -5,6 +5,29 @@
  */
 
 /**
+ * @param string $author - Author Name
+ *
+ * @return array
+ */
+function blackwhite_get_post_ids_by_book_author ( $author = '' ) {
+	global $wpdb;
+
+	$ids = [];
+
+	if ( empty($author) ) {
+		return $ids;
+	}
+
+	$ids = $wpdb->get_col(
+		$wpdb->prepare(
+			"SELECT `post_id` FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' AND `meta_value` = %s", $author
+		)
+	);
+
+	return $ids;
+}
+
+/**
  * Check isset template parts or not
  *
  * @param string $slug
@@ -29,6 +52,7 @@ function blackwhite_isset_template_part ($slug = '', $type = '') {
 
 /**
  * Prints any data like a print_r function
+ *
  * @param mixed ... Any data to be printed
  */
 function blackwhite_debug () {

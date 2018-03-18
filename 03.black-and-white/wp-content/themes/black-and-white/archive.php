@@ -15,11 +15,7 @@ $author = ( isset($_REQUEST['book_author']) && !empty($_REQUEST['book_author']) 
 if ($author) {
     global $wpdb, $wp_query, $query_string;
 
-    $postIds = $wpdb->get_col(
-	    $wpdb->prepare(
-		    "SELECT `post_id` FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' AND `meta_value` = %s", $author
-	    )
-    );
+    $postIds = blackwhite_get_post_ids_by_book_author( $author );
 
     if (!empty($postIds)) {
 	    query_posts(array_merge(
