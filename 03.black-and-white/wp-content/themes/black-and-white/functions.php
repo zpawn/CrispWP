@@ -35,5 +35,8 @@ add_action( 'admin_menu', 'blackwhite_admin_menu' );
 add_filter( 'acf/fields/google_map/api', 'acf_google_map' );
 add_action( 'widgets_init', 'blackwhite_widgets_init' );
 add_action( 'widgets_init', 'blackwhite_sidebars_init' );
-add_action( 'wp_ajax_author_books', 'blackwhite_ajax_books_author' );
-add_action( 'wp_ajax_nopriv_author_books', 'blackwhite_ajax_books_author' );
+
+if ( wp_doing_ajax() ) {
+	add_action( 'wp_ajax_author_books', 'blackwhite_ajax_books_author' );
+	add_action( 'wp_ajax_nopriv_author_books', 'blackwhite_ajax_books_author' );
+}
