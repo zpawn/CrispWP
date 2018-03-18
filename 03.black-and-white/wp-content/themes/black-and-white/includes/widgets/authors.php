@@ -6,7 +6,7 @@
 
 class Blackwhite_Authors_Widget extends WP_Widget {
 
-    protected $opts = [];
+    private $opts = [];
 
 	/**
 	 * Sets up the widgets name etc
@@ -32,34 +32,18 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 
 	    global $wpdb;
 
-	    $id = 0;
-		$allAuthors = $authors = $authorsPostIds = [];
 	    $title = $instance['title'];
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
 
-		$allAuthors = $wpdb->get_results("SELECT meta_value as name, post_id FROM ". $wpdb->prefix ."postmeta WHERE meta_key = 'book_author'");
-
-		foreach ($allAuthors as $author) {
-
-		    $authorId = array_search($author->name, $authors);
-
-		    if ($authorId === false) {
-                $authors[$id] = $author->name;
-                $authorsPostIds[$id][] = $author->post_id;
-                $id += 1;
-            } else {
-			    $authors[$authorId] = $author->name;
-			    $authorsPostIds[$authorId][] = $author->post_id;
-            }
-        }
+		$authors = $wpdb->get_col("SELECT `meta_value` as name FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' GROUP BY `name`");
 
 		if ( !empty( $authors ) ) : ?>
             <ul>
-				<?php foreach ($authors as $authorId => $authorName) : ?>
-                    <li><a href="" data-author-post-ids="<?php echo implode(',', $authorsPostIds[$authorId]) ?>"><?php echo $authorName ?></a></li>
+				<?php foreach ($authors as $authorName) : ?>
+                    <li><a href="" data-author="<?php echo $authorName ?>"><?php echo $authorName ?></a></li>
 				<?php endforeach; ?>
             </ul>
 		<?php endif;
