@@ -40,6 +40,11 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 
 		$authors = $wpdb->get_col("SELECT `meta_value` as name FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' GROUP BY `name`");
 
+		$authors = $wpdb->get_results(
+            "SELECT `meta_value` as `name`, COUNT(`meta_value`) as amount FROM `". $wpdb->prefix ."postmeta` WHERE `meta_key` = 'book_author' GROUP BY `name`",
+			ARRAY_A
+        );
+
 		$baseAuthorPermalink = home_url();
 		$baseAuthorPermalink .= str_replace(
             '%'. BOOKS_POST_TYPE .'%',
@@ -49,12 +54,14 @@ class Blackwhite_Authors_Widget extends WP_Widget {
 
 		if ( !empty( $authors ) ) : ?>
             <ul>
-				<?php foreach ($authors as $authorName) : ?>
-					<?php $authorPermalink = esc_url(add_query_arg( 'book_author', $authorName, $baseAuthorPermalink )); ?>
+				<?php foreach ($authors as $author) : ?>
+					<?php $authorPermalink = esc_url(add_query_arg( 'book_author', $author['name'], $baseAuthorPermalink )); ?>
                     <li>
-                        <a href="<?php echo $authorPermalink ?>" data-author="<?php echo $authorName ?>">
-                            <?php echo $authorName ?>
+                        <a href="<?php echo $authorPermalink ?>">
+                            <?php echo $author['name'] ?>
                         </a>
+                        |
+                        <button class="button-link js-author-books" type="button" data-title="<?php echo $author['name'] ?>">[ <?php echo $author['amount'] ?> ]</button>
                     </li>
 				<?php endforeach; ?>
             </ul>

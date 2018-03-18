@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
     'use strict';
 
     var acfGoogleMap = $('.js-acf-google-map');
@@ -61,4 +61,4 @@
     }
 
     window.initMap = initMap;
-})();
+})(jQuery);
